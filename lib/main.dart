@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/categories_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,11 +9,29 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Meals App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
+        accentColor: Colors.amber,
+        canvasColor: Colors.black,
+        fontFamily: 'Raleway',
+        
+        textTheme: ThemeData.light().textTheme.copyWith(
+          bodyText1: TextStyle(
+            color: Colors.blueGrey
+          ),
+          bodyText2: TextStyle(
+            color: Colors.green
+          ),
+          headline6:  TextStyle(
+            color: Colors.white,
+            fontSize: 20.0,
+            fontFamily: 'RobotoCondensed',
+            fontWeight: FontWeight.bold,
+          ),
+        )
       ),
-      home: MyHomePage(title: 'Meals App'),
+      home: CategoriesScreen(),
     );
   }
 }
