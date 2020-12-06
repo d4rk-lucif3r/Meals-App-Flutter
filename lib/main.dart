@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'screens/meal_detail_screen.dart';
 
 import 'screens/categories_screen.dart';
 import 'screens/category_meals_screen.dart';
@@ -41,15 +42,22 @@ class MyApp extends StatelessWidget {
 
       /* For CupertinoPageRouter */
       // ignore: missing_return
-      onGenerateRoute: (RouteSettings settings) {
+      onGenerateRoute: (settings) {
         switch (settings.name) {
           case '/':
             return CupertinoPageRoute(
                 builder: (_) => CategoriesScreen(), settings: settings);
-          case CategoryMealScreen.routeName :
+          case CategoryMealScreen.routeName:
             return CupertinoPageRoute(
                 builder: (_) => CategoryMealScreen(), settings: settings);
+          case MealDetailScreen.routeName:
+            return CupertinoPageRoute(
+                builder: (_) => MealDetailScreen(), settings: settings);
         }
+      },
+      onUnknownRoute: (settings) {
+        return CupertinoPageRoute(
+            builder: (_) => CategoriesScreen(), settings: settings);
       },
     );
   }
