@@ -55,6 +55,7 @@ class MyApp extends StatelessWidget {
                 builder: (_) => MealDetailScreen(), settings: settings);
         }
       },
+      /* Fall Back Route  if no royte found More of a 404 route */
       onUnknownRoute: (settings) {
         return CupertinoPageRoute(
             builder: (_) => CategoriesScreen(), settings: settings);
