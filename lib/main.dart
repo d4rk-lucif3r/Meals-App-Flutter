@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import './categories_screen.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
           accentColor: Colors.amber,
           canvasColor: Colors.black,
           fontFamily: 'Raleway',
+          //pageTransitionsTheme: PageTransitionsTheme(builders: {TargetPlatform.android: CupertinoPageTransitionsBuilder(),}),
           textTheme: ThemeData.light().textTheme.copyWith(
                 bodyText1: TextStyle(color: Colors.blueGrey),
                 bodyText2: TextStyle(color: Colors.green),
@@ -27,13 +29,27 @@ class MyApp extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               )),
+
       //home: CategoriesScreen(),
-      
-      routes: {
-        '/':(ctx) =>
-            CategoriesScreen(),
-        '/category-meals': (ctx) =>
-            CategoryMealScreen(),
+      initialRoute: '/',
+      /*For MaterialPageRoute */
+      // routes: {
+      //   '/': (ctx) => CategoriesScreen(),
+      //   CategoryMealScreen.routeName: (ctx) => CategoryMealScreen(),
+      // },
+      // ignore: missing_return
+
+      /* For CupertinoPageRouter */
+      // ignore: missing_return
+      onGenerateRoute: (RouteSettings settings) {
+        switch (settings.name) {
+          case '/':
+            return CupertinoPageRoute(
+                builder: (_) => CategoriesScreen(), settings: settings);
+          case CategoryMealScreen.routeName :
+            return CupertinoPageRoute(
+                builder: (_) => CategoryMealScreen(), settings: settings);
+        }
       },
     );
   }
