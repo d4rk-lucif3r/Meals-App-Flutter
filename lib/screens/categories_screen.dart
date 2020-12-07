@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/banner.dart';
 
 import '../data/dummy_data.dart';
 import '../widgets/category_item.dart';
@@ -6,7 +7,7 @@ import '../widgets/category_item.dart';
 class CategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     return wrapWithBanner( Scaffold(
         appBar: AppBar(
           title: const Text(
             "Meal App",
@@ -27,6 +28,6 @@ class CategoriesScreen extends StatelessWidget {
             crossAxisSpacing: 15,
             mainAxisSpacing: 15,
           ),
-        ));
+        )));
   }
 }
