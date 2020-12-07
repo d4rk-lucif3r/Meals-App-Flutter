@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'screens/filter_screen.dart';
 import 'screens/categories_screen.dart';
 import 'screens/category_meals_screen.dart';
 import 'screens/meal_detail_screen.dart';
@@ -89,6 +90,9 @@ class MyApp extends StatelessWidget {
           case MealDetailScreen.routeName:
             return CupertinoPageRoute(
                 builder: (_) => MealDetailScreen(), settings: settings);
+          case FiltersScreen.routeName:
+            return CupertinoPageRoute(
+                builder: (_) => FiltersScreen(), settings: settings);
         }
       },
       /* Fall Back Route  if no royte found More of a 404 route */
