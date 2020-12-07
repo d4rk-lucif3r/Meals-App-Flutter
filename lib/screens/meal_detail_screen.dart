@@ -45,7 +45,11 @@ class MealDetailScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: Colors.blueGrey),
               ),
-              margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              margin: EdgeInsets.only(
+                top: 10,
+                right: 10,
+                left: 10,
+              ),
               padding: EdgeInsets.all(10),
               child: Image.network(
                 selectedMeal.imageUrl,
@@ -57,6 +61,8 @@ class MealDetailScreen extends StatelessWidget {
               ListView.builder(
                 itemBuilder: (ctx, index) => Card(
                   color: Theme.of(context).accentColor,
+                  shadowColor: Colors.blueGrey,
+                  elevation: 4,
                   child: Padding(
                       padding: EdgeInsets.all(7),
                       child: Text(selectedMeal.ingredients[index])),
@@ -68,6 +74,9 @@ class MealDetailScreen extends StatelessWidget {
             buildContainer(ListView.builder(
               itemBuilder: (ctx, index) => Column(children: <Widget>[
                 ListTile(
+                  hoverColor: Colors.blueGrey,
+                  dense: true,
+                  visualDensity: VisualDensity.comfortable,
                   leading: CircleAvatar(
                     child: Text('# ${(index + 1)}'),
                   ),
