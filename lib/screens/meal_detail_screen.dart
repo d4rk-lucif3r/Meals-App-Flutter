@@ -3,6 +3,9 @@ import '../data/dummy_data.dart';
 
 class MealDetailScreen extends StatelessWidget {
   static const routeName = '/meal-detail';
+  final Function toggleFavorite;
+  final Function isMealFavorite;
+  MealDetailScreen(this.toggleFavorite, this.isMealFavorite);
   Widget buildSectionTitle(BuildContext context, String text) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
@@ -71,22 +74,34 @@ class MealDetailScreen extends StatelessWidget {
               ),
             ),
             buildSectionTitle(context, 'Steps'),
-            buildContainer(ListView.builder(
-              itemBuilder: (ctx, index) => Column(children: <Widget>[
-                ListTile(
-                  hoverColor: Colors.blueGrey,
-                  dense: true,
-                  visualDensity: VisualDensity.comfortable,
-                  leading: CircleAvatar(
-                    child: Text('# ${(index + 1)}'),
+            buildContainer(
+              ListView.builder(
+                itemBuilder: (ctx, index) => Column(children: <Widget>[
+                  ListTile(
+                    hoverColor: Colors.blueGrey,
+                    dense: true,
+                    visualDensity: VisualDensity.comfortable,
+                    leading: CircleAvatar(
+                      child: Text('# ${(index + 1)}'),
+                    ),
+                    title: Text(
+                      selectedMeal.steps[index],
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
                   ),
-                  title: Text(selectedMeal.steps[index]),
-                ),
-                Divider()
-              ]),
-              itemCount: selectedMeal.steps.length,
-            ))
+                  Divider()
+                ]),
+                itemCount: selectedMeal.steps.length,
+              ),
+            )
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(
+            isMealFavorite(mealID) ? Icons.favorite : Icons.favorite_border,
+            color: Colors.pink,
+          ),
+          onPressed: () => toggleFavorite(mealID),
         ));
   }
 }
